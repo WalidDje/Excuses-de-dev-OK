@@ -8,6 +8,8 @@ function PostModal() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //HANDLECLICK PAS ENCORE FINI ***
   const handleClick = () => {
     console.log('excuse enregistrée!');
     setShow(false);
