@@ -14,12 +14,12 @@ const db = new sqlite3.Database(db_name, err => {
   console.log("Connexion réussie à la base de données 'apptest.db'");
 });
 
+//CREATION BDD SQLITE3  ** ECHEC **
 const sql_create = `CREATE TABLE IF NOT EXISTS ExcusesData (
   http_code INTEGER PRIMARY KEY AUTOINCREMENT,
   tag VARCHAR(100) NOT NULL,
   message VARCHAR(100) NOT NULL,
 );`;
-
 db.run(sql_create, err => {
   if (err) {
     return console.error(err.message);
@@ -27,6 +27,7 @@ db.run(sql_create, err => {
   console.log("Création réussie de la table 'ExcusesData'");
 });
 
+//PORT LISTENING
 const port = process.env.PORT || 8000;
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, './client/build')));
 
+//ROUTE GET HOME
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './client/build', 'index.html'));
 });
@@ -48,7 +50,6 @@ app.get("/:http_code", function (req, res, next) {
 
   if (excuse)
     return res.json(excuse.message);
-
   return res.status(404).end("404 Not found");
 });
 
@@ -58,7 +59,6 @@ app.get("/api/excuses", (req, res) => {
 });
 
 //POST EXCUSES
-
 app.post('/api/excuses', (req, res) => {
     const excuse = new Excuse({
       http_code: req.body.http_code,
@@ -68,17 +68,6 @@ app.post('/api/excuses', (req, res) => {
     excusesData.save()
     .then(() => res.status(201).json({ message: 'Excuse enregistrée !'}))
     .catch(error => res.status(400).json({ error }));
-});
-
-//EXAMPLE 
-app.get("/livres", (req, res) => {
-  const sql = "SELECT * FROM ExcusesData ORDER BY http_code";
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    res.render("livres", { model: rows });
-  });
 });
 
 // PORT LISTENING
