@@ -1,6 +1,6 @@
 import { Route, Routes} from 'react-router-dom';
-
 import { Home, Lost, Err } from "./pages";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
