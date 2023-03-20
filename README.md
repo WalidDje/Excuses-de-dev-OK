@@ -22,3 +22,18 @@ Amusez-vous bien !
   - npm run build
   
 Un dossier 'build' sera ainsi automatiquement créé et vous pourrez rendre le code à partir de là.
+
+# A Suivre,
+- A propos du projet:
+Le projet front est constitué de 4 pages:
+-Home
+-Lost
+-Error
+-http_code,
+
+Chacune fonctionne correctement, à faire:
+La page Home n'est pas tout à fait terminée, l'ajout d'excuse via la Modal 'PostModal' n'est pas encore fini, je la terminerai dans la semaine.
+Il faut également ajouter un loader (sous forme de composant idéalement) au chargement d'une excuse.
+Et enfin il faut encore présenter la page Home sous forme de fade in de 2 secondes pour que la transition soit plus agréable.
+Tout ceci sera fait et commit dans la semaine.
+Bon code et bonne semaine à tous !
