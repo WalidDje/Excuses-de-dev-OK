@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from "../components";
+import { Button, PostModal } from "../components";
 import { getExcuses } from "../api/excuses";
 
 function Home() {
@@ -11,10 +11,13 @@ function Home() {
   }, [])
   
   return (
-    <div className='application'>
-      <h1>Excuse de dev</h1>
-      <p>{excuse}</p>
-      <Button excuses={excuses} onClick={(e) => setExcuse(e)} />
+    <div>
+      <div className='application px-5'>
+        <h1>Excuse de dev</h1>
+        <p className='py-2'>{excuse}</p>
+        <Button excuses={excuses} onClick={(e) => setExcuse(e)} />
+      </div>
+      <PostModal />
     </div>
   );
 }
